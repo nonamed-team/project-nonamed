@@ -3,7 +3,6 @@ import {
   IsCustomEnum,
   IsCustomString,
 } from 'src/common/decorators/dto/dto.decorator';
-import { CoreHardEntity } from 'src/common/entities/core-hard.entity';
 import { CoreSoftEntity } from 'src/common/entities/core-soft.entity';
 import { Column, Entity } from 'typeorm';
 import { EmojiQuizType } from '../emoji-quiz.constants';
@@ -24,10 +23,10 @@ export class EmojiQuiz extends CoreSoftEntity {
   emojis: string;
 
   @ApiProperty({
+    enum: EmojiQuizType,
     required: true,
     example: EmojiQuizType.MOVIE,
     description: '퀴즈 타입',
-    type: EmojiQuizType,
   })
   @IsCustomEnum({ type: EmojiQuizType, required: true })
   @Column({ type: 'enum', enum: EmojiQuizType, nullable: false })
