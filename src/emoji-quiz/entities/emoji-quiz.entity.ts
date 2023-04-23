@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsCustomString } from 'src/common/decorators/dto/dto.decorator';
 import { CoreHardEntity } from 'src/common/entities/core-hard.entity';
+import { CoreSoftEntity } from 'src/common/entities/core-soft.entity';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'EmojiQuiz', schema: process.env.DB_SCHEMA_NAME })
-export class EmojiQuiz extends CoreHardEntity {
+export class EmojiQuiz extends CoreSoftEntity {
   @ApiProperty({
     required: true,
     example: '🤔😚😂😋',

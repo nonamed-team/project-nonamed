@@ -35,7 +35,6 @@ const envValidationSchema = Joi.object({
       synchronize: true,
       logging: process.env.DB_LOGGING === 'true' ? true : false,
       autoLoadEntities: true,
-      // entities: [EmojiQuiz],
       // logger: new CustomDbLogger(),
       ssl: process.env.DB_SSL === 'true' ? true : false,
     }),
