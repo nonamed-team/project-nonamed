@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiDoc } from 'src/common/decorators/swagger/api-doc.decorator';
@@ -37,8 +38,8 @@ export class AdminEmojiQuizController {
   @ApiDoc({
     summary: '이모티콘 퀴즈를 추가합니다.',
   })
-  @Post('')
-  async createEmojiQuiz(@Body() generateEmojiQuizDto: GenerateEmojiQuizDto) {
+  @Put('')
+  async createEmojiQuiz(@Query() generateEmojiQuizDto: GenerateEmojiQuizDto) {
     return await this.adminemojiQuizService.createEmojiQuiz(
       generateEmojiQuizDto,
     );
@@ -47,7 +48,7 @@ export class AdminEmojiQuizController {
   @ApiDoc({
     summary: '이모티콘 퀴즈를 수정합니다.',
   })
-  @Put(':id')
+  @Post(':id')
   async modifyEmojiQuiz(
     @Param('id') id: number,
     @Body() modifyEmojiQuizDto: ModifyEmojiQuizDto,
