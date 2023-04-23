@@ -9,3 +9,9 @@ const constants = {
 };
 
 export default constants;
+
+export enum EmojiQuizType {
+  MOVIE = '영화',
+  GAME = '게임',
+  DRAMA = '드라마',
+}
