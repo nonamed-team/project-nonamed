@@ -39,7 +39,7 @@ export class AdminEmojiQuizController {
     summary: '이모티콘 퀴즈를 추가합니다.',
   })
   @Put('')
-  async createEmojiQuiz(@Query() generateEmojiQuizDto: GenerateEmojiQuizDto) {
+  async createEmojiQuiz(@Body() generateEmojiQuizDto: GenerateEmojiQuizDto) {
     return await this.adminemojiQuizService.createEmojiQuiz(
       generateEmojiQuizDto,
     );
