@@ -1,5 +1,7 @@
 const constants = {
-  props: {},
+  props: {
+    QUIZ_QUESTION_COUNT: 4,
+  },
   errorMessages: {
     INCORRECT_ANSWER: 'INCORRECT_ANSWER',
   },

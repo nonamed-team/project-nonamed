@@ -5,6 +5,8 @@ import { EmojiQuiz } from '../entities/emoji-quiz.entity';
 import { ModifyEmojiQuizDto } from '../dtos/modify-emoji-quiz.dto';
 import { GenerateEmojiQuizDto } from '../dtos/generate-emoji-quiz.dto';
 import { AnswerEmojiQuizDto } from '../dtos/answer-emoji-quiz.dto';
+import { EmojiQuizDto } from '../dtos/emoji-quiz.dto';
+import { EmojiQuizType } from '../emoji-quiz.constants';
 
 @Injectable()
 export class EmojiQuizRepository {
@@ -13,8 +15,12 @@ export class EmojiQuizRepository {
     private repository: Repository<EmojiQuiz>,
   ) {}
 
-  async findEmojiQuizs() {
-    return await this.repository.find();
+  async findEmojiQuizs(quizType: EmojiQuizType): Promise<EmojiQuizDto[]> {
+    return await this.repository.find({
+      where: {
+        quizType: quizType,
+      },
+    });
   }
 
   async findEmojiQuizById(id: number) {

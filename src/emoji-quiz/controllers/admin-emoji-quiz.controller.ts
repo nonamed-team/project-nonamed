@@ -13,6 +13,7 @@ import { ApiDoc } from 'src/common/decorators/swagger/api-doc.decorator';
 import { GenerateEmojiQuizDto } from '../dtos/generate-emoji-quiz.dto';
 import { ModifyEmojiQuizDto } from '../dtos/modify-emoji-quiz.dto';
 import { AdminEmojiQuizService } from '../services/admin-emoji-quiz-service';
+import { EmojiQuizType } from '../emoji-quiz.constants';
 
 @Controller('admin/emoji-quizs')
 @ApiTags('ADMIN 이모티콘 퀴즈')
@@ -23,8 +24,8 @@ export class AdminEmojiQuizController {
     summary: '이모티콘 퀴즈 목록을 조회합니다.',
   })
   @Get('')
-  async findEmojiQuizs() {
-    return await this.adminemojiQuizService.findEmojiQuizs();
+  async findEmojiQuizs(quizType: EmojiQuizType) {
+    return await this.adminemojiQuizService.findEmojiQuizs(quizType);
   }
 
   @ApiDoc({
