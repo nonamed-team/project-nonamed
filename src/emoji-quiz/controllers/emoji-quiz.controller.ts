@@ -25,7 +25,14 @@ export class EmojiQuizController {
   })
   @Get(':quizType')
   async getEmojiQuizRandomly(@Param('quizType') quizType: EmojiQuizType) {
-    return await this.emojiQuizService.getEmojiQuizRandomly(quizType);
+    const emoji = await this.emojiQuizService.getEmojiQuizRandomly(quizType);
+
+    return {
+      version: '1',
+      template: {
+        outputs: emoji,
+      },
+    };
   }
 
   @ApiDoc({
