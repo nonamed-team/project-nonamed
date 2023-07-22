@@ -6,11 +6,11 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { ApiDoc } from 'src/common/decorators/swagger/api-doc.decorator';
 import { EmojiQuizService } from '../services/emoji-quiz-service';
-import { Query } from 'typeorm/driver/Query';
 import { AnswerEmojiQuizDto } from '../dtos/answer-emoji-quiz.dto';
 import { EmojiQuizType } from '../emoji-quiz.constants';
 
@@ -23,8 +23,8 @@ export class EmojiQuizController {
     summary: '이모티콘 문제내기',
     description: '현재 이모티콘 문제 중 랜덤으로 한 문제를 조회합니다.',
   })
-  @Get(':quizType')
-  async getEmojiQuizRandomly(@Param('quizType') quizType: EmojiQuizType) {
+  @Get('')
+  async getEmojiQuizRandomly(@Query('quizType') quizType: EmojiQuizType) {
     const emoji = await this.emojiQuizService.getEmojiQuizRandomly(quizType);
 
     return {
